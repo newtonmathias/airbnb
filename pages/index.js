@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Banner from '../components/Banner'
 import Header from '../components/Header'
+import SmallCard from '../components/SmallCard'
 import styles from '../styles/Home.module.css'
 
 export default function Home({ exploreData }) {
@@ -20,9 +21,16 @@ export default function Home({ exploreData }) {
           <section className='pt-6'>
             <h2 className='text-4xl font-semibold pb-5'>Explore Nearby</h2>
 
-            {exploreData?.map((item) => {
-              <h1>{item.location}</h1>
-            })}
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+              { exploreData.products.map(({ id, title, brand, thumbnail}) => (
+                <SmallCard
+                key={id}
+                title={title} 
+                brand={brand} 
+                thumbnail={thumbnail} 
+                />
+              ))}
+            </div>
           </section>
         </main>
       </div>
@@ -30,14 +38,13 @@ export default function Home({ exploreData }) {
 }
 
 export async function getStaticProps() {
-  const exploreData = await fetch('https://links.papareact.com/pyp').
-  then(
+  const exploreData = await fetch('https://dummyjson.com/products').then(
     (res) => res.json()
   );
 
   return {
     props: {
-      exploreData
-    }
-  }
+      exploreData,
+    },
+  };
 }
