@@ -2,10 +2,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Banner from '../components/Banner'
 import Header from '../components/Header'
+import MediumCard from '../components/MediumCard'
 import SmallCard from '../components/SmallCard'
 import styles from '../styles/Home.module.css'
 
-export default function Home({ exploreData }) {
+export default function Home({ exploreData, cardsData }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -32,6 +33,17 @@ export default function Home({ exploreData }) {
               ))}
             </div>
           </section>
+
+          <section>
+            <h2 className='text-4xl font-semibold py-8'>Live Anywhere</h2>
+            
+            <div className='flex space-x-3 overflow-scroll scrollbar-hide p-3 ml-3'>
+              {cardsData.users.map(({id, username, image}) => (
+                <MediumCard key={id} image={image} username={username} />
+              ))}
+            </div>
+                
+          </section>
         </main>
       </div>
   )
@@ -42,9 +54,14 @@ export async function getStaticProps() {
     (res) => res.json()
   );
 
+  const cardsData = await fetch('https://dummyjson.com/users').then(
+    (res) => res.json()
+  );
+
   return {
     props: {
       exploreData,
+      cardsData
     },
   };
 }
