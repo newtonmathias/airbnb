@@ -6,6 +6,8 @@ import {
   UserCircleIcon 
 } from '@heroicons/react/24/solid'
 import { useState } from 'react';
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 
 function Header() {
   const [searchInput, setSearchInput] = useState("");
@@ -46,8 +48,10 @@ function Header() {
             <UserCircleIcon className='h-6' />
           </div>
         </div>
+
+        {searchInput && <h1>Hello</h1>}
       </header>
-  )
+  );
 }
 
 export default Header
