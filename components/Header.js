@@ -4,7 +4,7 @@ import {
   GlobeAltIcon, 
   Bars3Icon, 
   UserCircleIcon 
-} from '@heroicons/react/24/solid'
+} from '@heroicons/react/solid'
 import { useState } from 'react';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
