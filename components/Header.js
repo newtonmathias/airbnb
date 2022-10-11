@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { 
-  MagnifyingGlassIcon,
+  ZoomInIcon,
   GlobeAltIcon, 
-  Bars3Icon, 
+  ChartBarIcon, 
   UserCircleIcon 
 } from '@heroicons/react/solid'
 import { useState } from 'react';
@@ -67,7 +67,7 @@ function Header({placeholder}) {
            type="text" 
            placeholder={placeholder || "Start your search" }
            />
-          <MagnifyingGlassIcon className='hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2' />
+          <ZoomInIcon className='hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2' />
         </div>
 
         {/* Right */}
@@ -76,7 +76,7 @@ function Header({placeholder}) {
           <GlobeAltIcon className='h-6 cursor-pointer' />
 
           <div className='flex items-center space-x-4 border-2 p-2 rounded-full'>
-            <Bars3Icon className='h-6' />
+            <ChartBarIcon className='h-6' />
             <UserCircleIcon className='h-6' />
           </div>
         </div>
